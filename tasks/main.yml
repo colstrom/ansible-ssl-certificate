@@ -12,7 +12,7 @@
     owner: "{{ ssl_certificate_owner }}"
     group: "{{ ssl_certificate_group }}"
     mode: 0440
-  when: ssl_certificate_contents
+  when: ssl_certificate_public_contents
 
 - name: Upload Private Key
   template:
@@ -21,4 +21,13 @@
     owner: "{{ ssl_certificate_owner }}"
     group: "{{ ssl_certificate_group }}"
     mode: 0440
-  when: ssl_certificate_contents
+  when: ssl_certificate_private_contents
+
+- name: Upload Combined Public/Private Key
+  template:
+    src: template.combined
+    dest: "{{ ssl_certificate_path_combined }}"
+    owner: "{{ ssl_certificate_owner }}"
+    group: "{{ ssl_certificate_group }}"
+    mode: 0440
+  when: ssl_certificate_combined

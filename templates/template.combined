@@ -1,0 +1,2 @@
+{{ ssl_certificate_public_contents }}
+{{ ssl_certificate_private_contents }}
